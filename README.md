@@ -1,6 +1,6 @@
-Speech Emotion Recognition Using Deep Learning
+ **Speech Emotion Recognition Using Deep Learning**
 
-# ps: this is an open source project, so feel free to replicate the project :)
+#ps: this is an open source project, so feel free to replicate the project :)
 
 This project implements a Speech Emotion Recognition system using Recurrent Neural Networks (RNN) with Long Short-Term Memory (LSTM) layers. The system processes speech audio files, extracting Mel-frequency cepstral coefficients (MFCC) features, to classify emotions such as anger, happiness, sadness, and neutrality.
 
