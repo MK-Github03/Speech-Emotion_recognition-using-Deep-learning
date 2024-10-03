@@ -124,7 +124,10 @@ Project/
 ├── calm.jpg
 ├── happy.jpg
 ├── fearful.jpg
-└── disgust.jpg
+├── disgust.jpg
+├──angry.jpg
+├── fearful.jpg
+
 ```
 
 The image will be displayed using `matplotlib` based on the predicted emotion.
@@ -141,6 +144,4 @@ For a deeper understanding of the topics covered, you can refer to:
 2. Harár, P., Burget, R., & Dutta, M.K. (2021). *Speech emotion recognition using Deep Neural Networks*. IEEE.
 3. Various other papers and sources (included in the project documentation).
 
----
 
-This **README** now reflects the deep learning focus of your project. Let me know if you want any further edits!
