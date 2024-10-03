@@ -1,106 +1,146 @@
- **Speech Emotion Recognition Using Deep Learning**
+# Speech Emotion Detection using Deep Learning
 
-#ps: this is an open source project, so feel free to replicate the project :)
+Ps: this is an open source project, so feel free to replicate it!
 
-This project implements a Speech Emotion Recognition system using Recurrent Neural Networks (RNN) with Long Short-Term Memory (LSTM) layers. The system processes speech audio files, extracting Mel-frequency cepstral coefficients (MFCC) features, to classify emotions such as anger, happiness, sadness, and neutrality.
-
-The application is highly relevant for areas such as mental health monitoring, customer service, and interactive AI applications like virtual assistants.
+This project implements a Speech Emotion Detection (SED) system using deep learning techniques alongside feature extraction methods such as MFCC, Chroma, and Mel Spectrograms. The model is trained to classify emotions from speech signals, utilizing tools like SVM and deep learning models for accurate emotion recognition. The system can also display an emotion-specific image based on the predicted emotion.
 
 
-Features
+## Introduction
 
-- Emotion Classification: The system identifies and categorizes emotions from audio data.
-- Deep Learning Architecture: Utilizes RNN with LSTM to model the temporal sequence of speech.
-- MFCC Feature Extraction: Extracts MFCC features from audio data to represent sound for processing.
-- Versatile Applications: Suitable for healthcare, entertainment, customer service, virtual assistants, and more.
+This project focuses on recognizing emotions from speech using deep learning models, specifically leveraging **Recurrent Neural Networks (RNN)** to learn the temporal patterns in speech. By combining feature extraction from the LibROSA library (e.g., MFCC, Chroma) with a deep learning classifier, the model aims to classify human emotions from audio recordings effectively.
 
-Dataset
+## Requirements
 
-This project processes `.wav` format audio files for training and testing. The dataset consists of categorized speech samples representing different emotions. MFCC features are extracted from these samples and fed into the LSTM-based model.
-You can find the dataset from my repo.
+To run this project, you need to have the following libraries installed:
 
-Example Directory Structure:
+- `librosa`
+- `soundfile`
+- `numpy`
+- `scikit-learn`
+- `PIL` (Python Imaging Library)
+- `matplotlib`
+- `tensorflow` (or your deep learning framework, if you're using RNN)
+
+Install the necessary dependencies using the following command:
+
 ```
-emotion_dataset/
-    ├── train/
-    │   ├── angry/
-    │   ├── happy/
-    │   ├── sad/
-    │   └── neutral/
-    └── test/
-        ├── angry/
-        ├── happy/
-        ├── sad/
-        └── neutral/
+pip install librosa soundfile numpy scikit-learn Pillow matplotlib tensorflow
 ```
 
-Preparing the Dataset
+## Installation
 
-Make sure the `.wav` files are organized in the specified folder structure, where the folder names correspond to emotion labels (e.g., "angry", "happy", etc.). The labels will be automatically inferred during training.
+1. Clone the repository to your local machine:
 
-
-Installation
-
-1. Clone the repository:
-   ```
-   git clone https://github.com/yourusername/speech-emotion-recognition.git
-   cd speech-emotion-recognition
-   ```
-
-2. Install dependencies:
-   Ensure you have [Python 3.x](https://www.python.org/downloads/) installed, then run:
-   ```
-   pip install -r requirements.txt
-   ```
-   (Find the requirements.txt attachment in the main branch)
-   
-3. Prepare the dataset:
-   Organize the `.wav` files as per the directory structure provided above.
-
-Model Training and Testing
-
-Train the Model
-
-To train the model, run:
 ```
-python train_model.py
+git clone https://github.com/MK-Github03/Speech-Emotion_recognition-using-Deep-learning
 ```
 
-This will:
-- Load the training data
-- Extract MFCC features from the audio files
-- Train the LSTM-based RNN model
+2. Navigate to the project directory:
 
-Test the Model
-
-To evaluate the model’s performance, run:
 ```
-python test_model.py
+cd https://github.com/MK-Github03/Speech-Emotion_recognition-using-Deep-learning
 ```
-The model will be tested on a separate test dataset, and metrics such as accuracy and loss will be displayed.
 
+3. Install the required Python packages:
 
-Model Architecture
+```bash
+pip install -r requirements.txt
+```
 
-- MFCC Feature Extraction: 13 MFCC features are extracted using Librosa.
-- RNN Layers: Two LSTM layers are used to model temporal dependencies in the speech signal.
-- Fully Connected Layers: After the LSTM layers, fully connected layers are applied to classify the input speech into one of the predefined emotions (angry, happy, sad, neutral).
+## Dataset Structure
 
-Model Summary:
-- Input: 13 MFCC coefficients per time step
-- LSTM Layers: 2 layers, each with 128 hidden units
-- Fully Connected Layer: 64 units
-- Output Layer: 4 classes (angry, happy, sad, neutral)
+Place the audio files (in `.wav` format) inside a directory following this structure:
 
+```
+Project/
+│
+├── Actor_01/
+│   └── 03-01-06-02-01-01-01.wav
+├── Actor_02/
+│   └── 03-01-04-01-01-01-02.wav
+│
+└── ... (more audio files)
+```
 
-Applications
+Ensure that the dataset follows this structure where each actor's files are placed inside their respective folders.
 
-- Mental Health: Analyze speech patterns to monitor emotional health.
-- Customer Service: Detect emotional states in customer interactions and adapt responses accordingly.
-- Virtual Assistants: Enhance virtual assistant interactions by understanding user emotions.
-- Entertainment and Gaming: Create more immersive user experiences.
-- Marketing: Analyze customer feedback and emotional reactions to improve engagement.
+## Running the Model
 
-Contribution
+To train and test the model, modify the `data_directory` variable in the script to point to your dataset location:
 
-Contributions are welcome! Fork the repository and open a pull request with your proposed changes. Feel free to add new features, improve performance, or expand the dataset for additional emotions.
+```
+data_directory = '/path/to/your/Project'
+```
+
+Run the script:
+
+```
+python emotion_recognition.py
+```
+
+## Feature Extraction
+
+The model uses the following features from each audio file:
+- **MFCC (Mel-Frequency Cepstral Coefficients)**
+- **Chroma Feature**
+- **Mel Spectrogram**
+
+These features are extracted using the `librosa` library and concatenated into a feature vector for classification.
+
+(All the audio files will be uploaded in github or uploaded as a link)
+
+## Emotion Labels
+
+The emotion labels are extracted from the filenames following the naming convention `03-01-XX-XX-XX-XX-XX.wav`. The third field of the filename corresponds to the emotion, which is mapped as follows:
+- `01` = Neutral
+- `02` = Calm
+- `03` = Happy
+- `04` = Sad
+- `05` = Angry
+- `06` = Fearful
+- `07` = Disgust
+- `08` = Surprised
+
+## Training and Testing
+
+The dataset is split into training and testing sets using an 80/20 split. The model, which uses a **Recurrent Neural Network (RNN)** for sequence learning, is trained on the training set and evaluated on the test set. Additionally, **SVM** is used as a baseline for comparison. The system outputs accuracy and confusion matrix results.
+
+## Prediction for a Single File
+
+You can also test the model on a single file by providing the path to the audio file in the `single_file_path` variable:
+
+```python
+single_file_path = '/path/to/your/audio/file.wav'
+```
+
+The script will output the predicted emotion for the file and display the corresponding emotion image.
+
+## Emotion Images
+
+Ensure that you have the corresponding images for the classified emotions (calm, happy, fearful, disgust) stored at the following paths:
+
+```plaintext
+Project/
+├── calm.jpg
+├── happy.jpg
+├── fearful.jpg
+└── disgust.jpg
+```
+
+The image will be displayed using `matplotlib` based on the predicted emotion.
+
+## Results
+
+The model is evaluated on the test set using accuracy scores and a confusion matrix. You can also test individual audio files to view the predicted emotion and corresponding image.
+
+## References
+
+For a deeper understanding of the topics covered, you can refer to:
+
+1. El Ayadi, M., Kamel, M.S., & Karray, F. (2011). *Survey on speech emotion recognition*. Pattern Recognition.
+2. Harár, P., Burget, R., & Dutta, M.K. (2021). *Speech emotion recognition using Deep Neural Networks*. IEEE.
+3. Various other papers and sources (included in the project documentation).
+
+---
+
+This **README** now reflects the deep learning focus of your project. Let me know if you want any further edits!
