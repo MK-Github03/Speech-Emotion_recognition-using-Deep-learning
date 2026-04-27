@@ -1,6 +1,6 @@
 # Speech Emotion Detection using Deep Learning
 
-Ps: this is an open source project, so feel free to replicate it!
+Ps: this is an open source project, so feel free to use it!
 
 This project implements a Speech Emotion Detection (SED) system using deep learning techniques alongside feature extraction methods such as MFCC, Chroma, and Mel Spectrograms. The model is trained to classify emotions from speech signals, utilizing tools like SVM and deep learning models for accurate emotion recognition. The system can also display an emotion-specific image based on the predicted emotion.
 
